@@ -5,15 +5,11 @@ tags:
 categories: [Hexo]
 ---
 #### 官方文档：
-
 [Hexo中文文档][1]
-
 [NexT中文文档][2]
-
 [NexT源码][3]
 
 在Mac系统下搞了个博客，简单的记述一下从无到有的过程。
-
 在官方文档里有详细的安装以及使用教程，不想看文档的话可以按照下面的步骤快速的搭建。
 
 #### 安装 [Homebrew][16]
@@ -43,13 +39,9 @@ $ nvm install stable
 $ npm install -g hexo-cli
 ```
 hexo 简单的命令格式，比如：
-
 hexo g == hexo generate
-
 hexo d == hexo deploy
-
 hexo s == hexo server
-
 hexo n == hexo new
 
 #### 创建博客
@@ -61,36 +53,33 @@ $ hexo n "我的新博客"
 $ hexo g -d
 $ hexo s
 ```
-浏览器输入：**http://localhost:4000** 就可以看到了
+浏览器输入：http://localhost:4000 就可以看到了
 
-Hexo目录结构：
-
+Hexo目录：
 _config.yml  博客的配置文件
-
 scaffolds      博客文章模板
-
 source          博客文章目录
+themes        存放主题文件
 
-themes         存放主题文件
+>**Tip: ** hexo deploy出错解决方法：
 
-> **Tip: **   hexo deploy出错解决方法：
-> ```$ npm install hexo-deployer-git --save
-> ```
+```bash
+$ npm install hexo-deployer-git --save
+```
 
 #### 安装 [NexT][3] 主题
 ```bash
 $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```
- **配置主题：**
 
-打开站点配置文件**_config.yml**，找到 **theme** 字段，并将其值更改为 next
+**配置主题**
+打开站点配置文件**_config.yml**，找到**theme**字段，并将其值更改为**next**
 ```
 theme: next
 ```
 
- **更改主题外观**
-
-  找到 .../themes/next/**_config.yml** 文件，更改 **scheme** 字段
+**更改主题外观**
+找到 .../themes/next/**_config.yml** 文件，更改 **scheme** 字段
 ```
 # Schemes
 # scheme: Muse
@@ -99,7 +88,7 @@ scheme: Mist
 # scheme: Gemini
 ```
 
- **使主题生效：**
+**使主题生效：**
 ``` bash
 $ hexo clean
 $ hexo g -d
@@ -108,28 +97,21 @@ $ hexo s
 
 到这里博客的本地搭建已经完成了，这只是开始。
 如果想要博客让别人也能看见，那就得申请域名把博客部署到服务器，然后别人通过域名访问就可以浏览你的博客啦。
-当然你可以把博客部署到[GitHub][11]或者[Coding][12]又或者别的服务器等，
-域名购买有[DNSPod][13]，[万网][14]，[GoDaddy][15]等等，有国内，国外自己考虑，
-之后还想要自己的博客有个性或者更好用那就选一个好看的主题DIY了。
-
+当然你可以把博客部署到[GitHub][11]或者[Coding][12]又或者别的服务器等，域名购买有[DNSPod][13]，[万网][14]，[GoDaddy][15]等等，有国内，国外自己考虑，之后还想要自己的博客有个性或者更好用那就选一个好看的主题DIY了。
 
 以下列出的条目可供参考，或许能帮上你～
 
 #### 部署本地文件到github及源代码托管参考：
 [Hexo+GitHub Pages搭建的个人博客][4] 
-
 [Mac搭建hexo博客][5]
 
 #### 域名绑定参考 ：
 [hexo边搭边记][6]
-
 [在github上搭建自己的主页和顶级域名的绑定][7]
 
 #### NexT主题定制参考：
 [hexo框架基于next主题定制][8]
-
 [基于Hexo+Next主题的个人博客搭建定制优化][9]   
-
 [hexo的next主题个性化教程:打造炫酷网站][10] 
 
 [1]: https://hexo.io/zh-cn/
