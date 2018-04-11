@@ -454,9 +454,9 @@ pangu: false
 # Baidu Analytics ID
 #baidu_analytics:
 
-# Disqus
+# Disqus Comment
 disqus:
-  enable: false
+  enable: true
   shortname: http-blog-lzxy169-com
   count: true
   lazyload: false
