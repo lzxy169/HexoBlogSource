@@ -118,6 +118,9 @@ $ hexo s
 [基于Hexo+Next主题的个人博客搭建定制优化][9]   
 [hexo的next主题个性化教程:打造炫酷网站][10] 
 
+#### Markdown 语法参考 ：
+[Markdown 语法整理大集合2017][25]
+
 [1]: https://hexo.io/zh-cn/
 [2]: http://theme-next.iissnan.com/getting-started.html
 [3]: https://github.com/iissnan/hexo-theme-next
@@ -143,3 +146,4 @@ $ hexo s
 [23]: https://packagecontrol.io/packages/MarkdownEditing
 [24]: https://packagecontrol.io/packages/Markdown%20Preview
 [24]: https://packagecontrol.io/packages/OmniMarkupPreviewer
+[25]: https://www.jianshu.com/p/b03a8d7b1719
