@@ -99,6 +99,10 @@ $ hexo s
 如果想要博客让别人也能看见，那就得申请域名把博客部署到服务器，然后别人通过域名访问就可以浏览你的博客啦。
 当然你可以把博客部署到[GitHub][11]或者[Coding][12]又或者别的服务器等，域名购买有[DNSPod][13]，[万网][14]，[GoDaddy][15]等等，有国内，国外自己考虑，之后还想要自己的博客有个性或者更好用那就选一个好看的主题DIY了。
 
+至于写Markdown写作工具，各有所爱，我用的是[Sublime Text][21]，装上 [Package Control][22]，[Markdown​Editing][23],  [Markdown Preview][24]或者[Omni​Markup​Previewer][24] 等插件，就可以愉快的玩耍了。
+
+
+
 以下列出的条目可供参考，或许能帮上你～
 
 #### 部署本地文件到github及源代码托管参考：
@@ -134,3 +138,8 @@ $ hexo s
 [18]: https://github.com/creationix/nvm
 [19]: https://nodejs.org/en/
 [20]: https://hexo.io/
+[21]: https://www.sublimetext.com/
+[22]: https://packagecontrol.io/
+[23]: https://packagecontrol.io/packages/MarkdownEditing
+[24]: https://packagecontrol.io/packages/Markdown%20Preview
+[24]: https://packagecontrol.io/packages/OmniMarkupPreviewer
