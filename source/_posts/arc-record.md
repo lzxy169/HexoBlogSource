@@ -461,7 +461,7 @@ objc_release(obj);
 
 >Thread-local storage（线程局部存储）指向 hot page ，即最新添加的 autoreleased 对象所在的那个 page 。???
 
-* **__weak：** 表示对对象的“弱引用”。弱引用并不持有对象，不会改变赋值给附有 __weak 修饰符的变量的引用计数。持有弱引用的变量，在超出其作用域时，对象即被释放。在持有某对象的弱引用时，若该对象被废弃，则此弱引用将自动失效且被赋值为 nil (空弱引用)。**使用** __weak 修饰符的变量，即是使用注册到 autoreleasepool 中的对象，该对象的引用计数会加1.
+* **__weak：** 表示对对象的“弱引用”。弱引用并不持有对象，不会改变赋值给附有 \_\_weak 修饰符的变量的引用计数。持有弱引用的变量，在超出其作用域时，对象即被释放。在持有某对象的弱引用时，若该对象被废弃，则此弱引用将自动失效且被赋值为 nil (空弱引用)。**使用** \_\_weak 修饰符的变量，即是使用注册到 autoreleasepool 中的对象，该对象的引用计数会加1。
 
 ```objective-c
 id __strong obj = [[NSObject alloc] init];
@@ -485,13 +485,13 @@ void objc_destroyWeak(id *location) {
     (void)storeWeak(location, nil);
 }
 ```
-　　storeWeak() 函数把第二参数的赋值对象的地址作为键值key，将第一参数的附有 __weak 修饰符的变量的地址作为键值 value 注册到 __weak 表中。如果第二参数(key)为 nil， 则把变量的地址(value)从 weak 表中删除。
+　　storeWeak() 函数把第二参数的赋值对象的地址作为键值key，将第一参数的附有 \_\_weak 修饰符的变量的地址作为键值 value 注册到 \_\_weak 表中。如果第二参数(key)为 nil， 则把变量的地址(value)从 weak 表中删除。
 
-　　weak 表与引用计数表相同，作为散列表被实现。如果使用 weak 表，将废弃对象的地址作为键值key进行检索，就能高速地获取对应的附有 __weak 修饰符的变量的地址。另外，由于一个对象可同时赋值给多个附有 __weak 修饰符的变量中，所以对于一个键值key，可注册多个变量的地址。
+　　weak 表与引用计数表相同，作为散列表被实现。如果使用 weak 表，将废弃对象的地址作为键值key进行检索，就能高速地获取对应的附有 \_\_weak 修饰符的变量的地址。另外，由于一个对象可同时赋值给多个附有 \_\_weak 修饰符的变量中，所以对于一个键值key，可注册多个变量的地址。
 　　
-　　objc_loadWeakRetained() 函数取出附有 __weak 修饰符变量所引用的对象并 retain。objc_autorelease() 函数将对象注册到 autoreleasepool 中 。如果大量使用附有 __weak修饰符的变量，注册到 autoreleasepool 中的对象也会大量的增加，因此在使用附有 __weak修饰符的变量时，最好先暂时赋值给附有 __strong 修饰符的变量后使用。
+　　objc_loadWeakRetained() 函数取出附有 \_\_weak 修饰符变量所引用的对象并 retain。objc_autorelease() 函数将对象注册到 autoreleasepool 中 。如果大量使用附有 \_\_weak修饰符的变量，注册到 autoreleasepool 中的对象也会大量的增加，因此在使用附有 \_\_weak修饰符的变量时，最好先暂时赋值给附有 __strong 修饰符的变量后使用。
 
-**对象废弃执行的动作**
+>对象废弃执行的动作
 
 1. objc_release
 2. 当引用计数为0执行dealloc
@@ -500,17 +500,16 @@ void objc_destroyWeak(id *location) {
 5. objc_destructInstance
 6. objc_clear_deallocating
 
-**对象被弃用时最后调用objc_clear_deallocating 函数执行的动作**
+>对象被弃用时最后调用objc_clear_deallocating 函数执行的动作
 
 1. 从 weak 表中获取废弃对象的地址为键值key的记录
 2. 将包含在记录中的所有附有 __weak 修饰符变量的地址，赋值为 nil 
 3. 从weak 表中删除该记录
 4. 从引用计数表中删除废弃对象的地址为键值的记录
 
-　　如果大量使用附有 __weak 修饰符的变量，则会消耗相应的CPU资源，良策是只在需要避免循环引用时使用 __weak 修饰符。
+　　如果大量使用附有 \_\_weak 修饰符的变量，则会消耗相应的CPU资源，良策是只在需要避免循环引用时使用 \_\_weak 修饰符。
 
-* **__unsafe_unretained：**
-　　附有该修饰符的变量不属于编译器的内存管理对象。既不持有对象的强引用也不持有对象的弱引用，只是表示对象，若该对象被废弃，其为悬垂指针。
+* **__unsafe_unretained：** 附有该修饰符的变量不属于编译器的内存管理对象。既不持有对象的强引用也不持有对象的弱引用，只是表示对象，若该对象被废弃，其为悬垂指针。
 
 * **__autoreleasing：** 将对象赋值给有 __autoreleasing 修饰符的变量，等同于 ARC 无效时调用对象 autorelease 方法，会将对象注册到 autoreleasepool 中，对象的引用计数加1。
 
