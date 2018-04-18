@@ -1,9 +1,11 @@
 ---
 title: ARC(Automatic Reference Counting)简记
+date: 2018-04-16 10:29:09
 categories:
   - Objective-C
-date: 2018-04-16 10:29:09
 tags:
+  - c
+  - c++
 ---
 
 ## ARC概述
