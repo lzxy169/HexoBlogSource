@@ -1,6 +1,6 @@
 ---
 title: 简记Hexo及NexT主题的安装使用
-date: 2018-04-10 13:11:08
+date: 2018-04-08 13:11:08
 tags:
 categories: [Hexo]
 ---
