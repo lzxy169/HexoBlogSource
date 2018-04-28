@@ -26,6 +26,8 @@ $ brew install git
 nvm: Node Version Manager，安装 Node.js 的最佳方式是使用 nvm。
 ```bash
 $ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+// 或者
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
 ```
 安装完成后，重启终端nvm环境才生效。
 
