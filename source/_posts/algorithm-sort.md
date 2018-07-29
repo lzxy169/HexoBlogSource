@@ -115,7 +115,7 @@ categories: Algorithm
 
 ```c
     // 快速排序
-    void qsort(int *a, int left, int right) {
+    void qsort(int a[], int left, int right) {
         if(left >= right) { // 如果左边索引大于或者等于右边的索引就代表已经整理完成一个组了
             return ;
         }
@@ -169,7 +169,7 @@ categories: Algorithm
 ```c
     // 堆排序 从大到小排序
     // 以i节点为根，调整为堆的算法，n是节点总数，i节点的子结点为i*2+1,i*2+2
-    void heapMin(int a[100], int i, int n) {
+    void heapMin(int a[], int i, int n) {
         // tmp保存根节点，j为左孩子编号
         int tmp = a[i];
         int j = 2*i+1;
@@ -188,7 +188,7 @@ categories: Algorithm
         a[i] = tmp;
     }
     
-    void heapSort(int a[100], int n){
+    void heapSort(int a[], int n){
         // n/2-1最后一个非叶子节点
         // 下面这个操作是建立最小堆
         for (int i = n/2-1; i >= 0; i--) {
