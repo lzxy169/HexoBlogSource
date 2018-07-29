@@ -9,9 +9,7 @@ categories: Algorithm
 ### 插入排序
 
 **1，直接插入排序：**就是检查第i个数字，如果在它的左边的数字比它大，进行交换，这个动作一直继续下去，直到这个数字的左边数字比它还要小，就可以停止了。插入排序法主要的回圈有两个变数：i和j，每一次执行这个回圈，就会将第i个数字放到左边恰当的位置去。
-
-```c
-    // 直接插入 从小到大排序
+```c// 直接插入 从小到大排序
     void insertSort(int a[], int n) {
         for(int i = 1; i < n; i++) {
             int tmp = a[i];
@@ -28,8 +26,7 @@ categories: Algorithm
     }
 ```
 
-```c
-    void insertSort(int a[], int n) {
+```c void insertSort(int a[], int n) {
         for(int i = 1; i < n; i++) {
             int tmp = a[i];
             int j = i - 1;
@@ -43,8 +40,7 @@ categories: Algorithm
 
 **2，折半插入排序（binary insertion sort）：**当直接插入进行到某一趟时，对于a[i]来讲，前面i－1个记录已经按关键字有序。此时不用直接插入排序的方法，而改为折半查找，找出a[i]应插入的位置。
 
-```c
-    // 折半插入 从小到大排序
+```c // 折半插入 从小到大排序
     void binaryInsertSort(int a[], int n) {
         for (int i = 1; i < n; i++) {
             int tmp = a[i];
@@ -68,8 +64,7 @@ categories: Algorithm
 
 **3，希尔排序：**“缩小增量”的排序方法，初期选用增量较大间隔比较，然后增量缩小，最后为1，希尔排序对增量序列没有严格规定。
 
-```c
-    // 希尔排序 从小到大排序
+```c // 希尔排序 从小到大排序
     void shellSort(int a[], int n) {
         int k = n / 2;
         while (k > 0) {
@@ -91,8 +86,7 @@ categories: Algorithm
 
 **1，冒泡排序：**面对一排数据，先从前往后两两比较，如果前一个数比后一个数大就交换两者的顺序，即第一个数和第二个数比，第二个数和第三个数比，……,倒数第二个数和最后一个数比，这样一轮下来以后最大的数就排到最后；接着把除去最大的数的该组数据进行同样的操作，直至这组数只剩下一个，排序结束。
 
-```c
-    // 冒泡排序
+```c  // 冒泡排序
     void bubbleSort(int a[] , int n) {
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n-i-1; j++) { // 比较两个相邻的元素
@@ -113,8 +107,7 @@ categories: Algorithm
 3)．i++由前向后找比它大的数，找到后也挖出此数填到前一个坑a[j]中。
 4)．再重复执行2，3二步，直到i==j，将基准数填入a[i]中。
 
-```c
-    // 快速排序
+```c   // 快速排序
     void qsort(int a[], int left, int right) {
         if(left >= right) { // 如果左边索引大于或者等于右边的索引就代表已经整理完成一个组了
             return ;
@@ -145,8 +138,7 @@ categories: Algorithm
 
 **1，简单选择排序：**面对一排数，假设第一个数是最小的，将第一个数依次与后面的所有数据进行比较，如发现更小的就把该数的下标记录下来，再将这个数与后面的数比较，一轮下来以后如果发现最小的数的下标不是第一个，就与第一个数交换，这样就保证了第一个位置上的数是最小的；对除去第一个数的剩下的数做同样的操作，多轮循环之后，直到剩下最后一个数，排序结束。
 
-```c
-    // 简单选择排序
+```c  // 简单选择排序
     void simpleChoiceSort(int a[], int n) {
         for(int i = 0; i < n; i++) {
             int m = i;
@@ -166,8 +158,7 @@ categories: Algorithm
 
 **2，堆排序（heap sort）：**堆有两个性质，一是堆中某个节点的值总是不大于或不小于其父节点的值，二是堆是一棵完全树。以从大到小排序为例，首先要把得到的数组构建为一个最小堆，这样父节点均是小于或者等于子结点，根节点就是最小值，然后让根节点与尾节点交换，这样一次之后，再把前n－1个元素构建出最小根堆，让根结点与第n－2个元素交换，依此类推，得到降序序列。时间复杂度：O(nlogn)
 
-```c
-    // 堆排序 从大到小排序
+```c   // 堆排序 从大到小排序
     // 以i节点为根，调整为堆的算法，n是节点总数，i节点的子结点为i*2+1,i*2+2
     void heapMin(int a[], int i, int n) {
         // tmp保存根节点，j为左孩子编号
@@ -192,8 +183,8 @@ categories: Algorithm
         // tmp保存根节点，j为左孩子编号
         int tmp = a[i];
         int j = 2*i+1;
-        for (; j < n; j = j*2 + 1) { //从i结点的左子结点开始，也就是2i+1处开始
-            if (j+1 < n && a[j] < a[j + 1]) { //如果左子结点小于右子结点，k指向右子结点
+        for (; j < n; j = j*2+1) { //从i结点的左子结点开始，也就是2i+1处开始
+            if (j+1 < n && a[j] < a[j+1]) { //如果左子结点小于右子结点，k指向右子结点
                 j ++;
             }
             if (a[j] > tmp) { //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
@@ -204,7 +195,7 @@ categories: Algorithm
             }
         }
         a[i] = tmp; //将tmp值放到最终的位置
-}
+    }
 
         while (j < n) {
             if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
@@ -260,9 +251,7 @@ categories: Algorithm
 3.组合：将已排序的两个子区间arr[low..mid]和arr[mid+1..high]归并为一个有序的区间arr[low..high]。
 递归的终结条件：子区间长度为1（一个记录自然有序）。
 
-```c
-    
-    // 归并子算法
+```c// 归并子算法
     // 将有序的arr[low...mid]和s[mid+1...high]归并为有序的tmp[low...high]
     void merge(int arr[], int tmp[], int low, int mid, int high) {
         int i = low;
