@@ -1,7 +1,6 @@
 ---
 title: hexo_command
 tags:
-// https://segmentfault.com/a/1190000002632530
 ---
 
 ### 文章
@@ -9,6 +8,7 @@ tags:
 ```bash
 $ hexo new "new article"
 ```
+// https://segmentfault.com/a/1190000002632530
 
 ### 草稿
 
@@ -16,7 +16,8 @@ $ hexo new "new article"
 ```bash
 $ hexo new draft "new draft"
 ```
-会在source/\_drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到\_drafts目录之中。
+
+会在source/drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动drafts目录之中。
 
 如果你希望强行预览草稿，更改配置文件：
 ```bash
