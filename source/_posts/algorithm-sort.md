@@ -188,6 +188,38 @@ categories: Algorithm
         a[i] = tmp;
     }
     
+    void heapMax(int a[], int i, int n) {
+        // tmp保存根节点，j为左孩子编号
+        int tmp = a[i];
+        int j = 2*i+1;
+        for (; j < n; j = j*2 + 1) { //从i结点的左子结点开始，也就是2i+1处开始
+            if (j+1 < n && a[j] < a[j + 1]) { //如果左子结点小于右子结点，k指向右子结点
+                j ++;
+            }
+            if (a[j] > tmp) { //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+                a[i] = a[j];
+                i = j;
+            } else {
+                break;
+            }
+        }
+        a[i] = tmp; //将tmp值放到最终的位置
+}
+
+        while (j < n) {
+            if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
+                j++;
+            }
+            if (a[j] >= tmp) {
+                break;
+            }
+            a[i] = a[j];
+            i = j;
+            j = 2*i+1;
+        }
+        a[i] = tmp;
+    }
+
     void heapSort(int a[], int n){
         // n/2-1最后一个非叶子节点
         // 下面这个操作是建立最小堆
