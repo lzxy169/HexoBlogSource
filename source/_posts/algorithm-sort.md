@@ -168,15 +168,14 @@ categories: Algorithm
 
 ```c
     // 堆排序 从大到小排序
-    // 以i节点为根，调整为堆的算法，m是节点总数，i节点的子结点为i*2+1,i*2+2
-    void heapMin(int a[100], int i, int m) {
+    // 以i节点为根，调整为堆的算法，n是节点总数，i节点的子结点为i*2+1,i*2+2
+    void heapMin(int a[100], int i, int n) {
         // tmp保存根节点，j为左孩子编号
-        int j, tmp;
-        tmp = a[i];
-        j = 2*i+1;
+        int tmp = a[i];
+        int j = 2*i+1;
         
-        while (j > m) {
-            if (j+1 < m && a[j+1] < a[j]) { // 在左右孩子中找最小的
+        while (j < n) {
+            if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
                 j++;
             }
             if (a[j] >= tmp) {
@@ -193,7 +192,7 @@ categories: Algorithm
         // n/2-1最后一个非叶子节点
         // 下面这个操作是建立最小堆
         for (int i = n/2-1; i >= 0; i--) {
-            heapMin(r, i, n);
+            heapMin(a, i, n);
         }
         // for语句为输出堆顶元素，调整堆操作
         for (int j = n-1; j >= 1; j--) {
@@ -201,7 +200,7 @@ categories: Algorithm
             int tmp = a[0];
             a[0] = a[j];
             a[j] = tmp;
-            heapMin(r, 0, j);
+            heapMin(a, 0, j);
         }
         // 得到的就是降序序列
         for (int i = 0; i < n; i++) {
