@@ -15,7 +15,7 @@ categories: Algorithm
         for(int i = 1; i < n; i++) {
             int tmp = a[i];
             int j = i - 1;
-            while(tmp < a[j]) {
+            while(a[j] > tmp) {
                 a[j+1] = a[j];
                 j--;
                 if(j == -1){
