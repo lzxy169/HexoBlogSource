@@ -283,3 +283,7 @@ categories: Algorithm
 最低位优先(Least Significant Digit first)法，简称LSD法：先从kd开始排序，再对kd-1进行排序，依次重复，直到对k1排序后便得到一个有序序列。 
 
 LSD的基数排序适用于位数小的数列，如果位数多的话，使用MSD的效率会比较好。
+
+[图解排序算法][1]
+
+[1]: https://www.cnblogs.com/chengxiao/category/880910.html
