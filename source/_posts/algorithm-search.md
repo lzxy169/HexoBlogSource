@@ -3,6 +3,7 @@ title: 算法之查找
 date: 2018-04-10 12:25:58
 tags: [c, c++]
 categories: Algorithm
+mathjax: true
 ---
 
 ### 1. 顺序查找

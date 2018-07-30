@@ -89,3 +89,8 @@ deploy:
    type: git
    repo: https://github.com/lzxy169/lzxy169.github.io.git
    branch: master
+
+# MathJax Support
+mathjax:
+  enable: true
+  per_page: true
