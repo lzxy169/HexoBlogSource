@@ -119,12 +119,16 @@ categories: Algorithm
             while(i < j && key <= a[j]) {
                 j--; // 向前寻找
             }
-            a[i] = a[j]; // 将比第一个小的移到低端
+            if (i < j) {
+                a[i] = a[j]; // 将比第一个小的移到低端
+            }
             
             while(i < j && key >= a[i]) {
                 i++; // 向后寻找
             }
-            a[j] = a[i]; // 将比第一个大的移到高端
+            if (i < j) {
+                a[j] = a[i]; // 将比第一个大的移到高端
+            }
         }
         a[i] = key; // 当在当组内找完一遍以后就把中间数key回归
         
