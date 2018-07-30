@@ -1,8 +1,8 @@
 ---
 title: 算法之查找
-date: 2018-07-30 19:59:46
-tags:
-categories:
+date: 2018-04-10 12:25:58
+tags: [c, c++]
+categories: Algorithm
 ---
 
 ### 1. 顺序查找
