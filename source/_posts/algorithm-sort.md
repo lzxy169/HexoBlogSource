@@ -162,7 +162,7 @@ categories: Algorithm
     void heapMin(int a[], int i, int n) {
         // tmp保存根节点，j为左孩子编号
         int tmp = a[i];
-        int j = 2*i+1;
+        int j = i*2+1;
         
         while (j < n) {
             if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
@@ -173,7 +173,7 @@ categories: Algorithm
             }
             a[i] = a[j];
             i = j;
-            j = 2*i+1;
+            j = i*2+1;
         }
         a[i] = tmp;
     }
@@ -181,7 +181,7 @@ categories: Algorithm
     void heapMax(int a[], int i, int n) {
         // tmp保存根节点，j为左孩子编号
         int tmp = a[i];
-        int j = 2*i+1;
+        int j = i*2+1;
         for (; j < n; j = j*2+1) { //从i结点的左子结点开始，也就是2i+1处开始
             if (j+1 < n && a[j] < a[j+1]) { //如果左子结点小于右子结点，k指向右子结点
                 j ++;
