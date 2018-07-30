@@ -199,21 +199,7 @@ categories: Algorithm
         a[i] = tmp; //将tmp值放到最终的位置
     }
 
-        while (j < n) {
-            if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
-                j++;
-            }
-            if (a[j] >= tmp) {
-                break;
-            }
-            a[i] = a[j];
-            i = j;
-            j = 2*i+1;
-        }
-        a[i] = tmp;
-    }
-
-    void heapSort(int a[], int n){
+    void heapSort(int a[], int n) {
         // n/2-1最后一个非叶子节点
         // 下面这个操作是建立最小堆
         for (int i = n/2-1; i >= 0; i--) {
