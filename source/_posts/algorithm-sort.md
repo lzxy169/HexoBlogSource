@@ -233,47 +233,47 @@ categories: Algorithm
 2.设定最初位置分别为两个已经拷贝排序序列的起始位置，比较两个序列元素的大小，依次选择相对小的元素放到原始序列；
 3.重复2直到某一拷贝序列全部放入原始序列，将另一个序列剩下的所有元素直接复制到原始序列尾。
 
-设归并排序的当前区间是arr[low..high]，分治法的三个步骤是：
+设归并排序的当前区间是a[low..high]，分治法的三个步骤是：
 1.分解：将当前区间一分为二，即求分裂点
-2.求解：递归地对两个子区间arr[low..mid]和arr[mid+1..high]进行归并排序；
-3.组合：将已排序的两个子区间arr[low..mid]和arr[mid+1..high]归并为一个有序的区间arr[low..high]。
+2.求解：递归地对两个子区间a[low..mid]和a[mid+1..high]进行归并排序；
+3.组合：将已排序的两个子区间a[low..mid]和a[mid+1..high]归并为一个有序的区间a[low..high]。
 递归的终结条件：子区间长度为1（一个记录自然有序）。
 
 ```c // 归并子算法
-     // 将有序的arr[low...mid]和s[mid+1...high]归并为有序的tmp[low...high]
-    void merge(int arr[], int tmp[], int low, int mid, int high) {
+     // 将有序的a[low...mid]和a[mid+1...high]归并为有序的tmp[low...high]
+    void merge(int a[], int tmp[], int low, int mid, int high) {
         int i = low;
         int j = mid + 1;
         int k = low;
         
         while (i != mid + 1 && j != high + 1) {
-            if (arr[i] >= arr[j]) {
-                tmp[k++] = arr[j++];
+            if (a[i] >= a[j]) {
+                tmp[k++] = a[j++];
             } else {
-                tmp[k++] = arr[i++];
+                tmp[k++] = a[i++];
             }
         }
         
         while (i != mid + 1) {
-            tmp[k++] = arr[i++];
+            tmp[k++] = a[i++];
         }
         
         while (j != high + 1) {
-            tmp[k++] = arr[j++];
+            tmp[k++] = a[j++];
         }
         
         for (i = low; i <= high; i++) {
-            arr[i] = tmp[i];
+            a[i] = tmp[i];
         }
     }
     
     // 两路归并排序
-    void mergeSort(int arr[], int tmp[], int low, int high) {
+    void mergeSort(int a[], int tmp[], int low, int high) {
         if (low < high) {
             int mid = (low + high) / 2;
-            mergeSort(arr, tmp, low, mid);
-            mergeSort(arr, tmp, mid + 1, high);
-            merge(arr, tmp, low, mid, high);
+            mergeSort(a, tmp, low, mid);
+            mergeSort(a, tmp, mid + 1, high);
+            merge(a, tmp, low, mid, high);
         }
     }
 ```
