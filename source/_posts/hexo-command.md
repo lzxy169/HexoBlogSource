@@ -7,14 +7,12 @@ categories: [Hexo]
 
 ### 文章
 ```
-bash
 $ hexo new "new article"
 ```
 
 ### 草稿
 草稿相当于很多博客都有的“私密文章”功能。
 ```
-bash
 $ hexo new draft "new draft"
 ```
 
@@ -22,25 +20,21 @@ $ hexo new draft "new draft"
 
 如果你希望强行预览草稿，更改配置文件：
 ```
-bash
 $ render_drafts: true
 ```
 
 或者，如下方式启动server：
 ```
-bash
 $ hexo server --drafts
 ```
 
 下面这条命令可以把草稿变成文章，或者页面：
 ```
-bash
 $ hexo publish [layout] <filename>
 ```
 
 ### hexo
 ```
-bash
 npm install hexo -g #安装  
 npm update hexo -g #升级  
 hexo init #初始化
@@ -48,7 +42,6 @@ hexo init #初始化
 
 ### 简写
 ```
-bash
 hexo n "我的博客" == hexo new "我的博客" #新建文章
 hexo p == hexo publish
 hexo g == hexo generate#生成
@@ -58,7 +51,6 @@ hexo d == hexo deploy#部署
 
 ### 服务器
 ```
-bash
 hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。
 hexo server -s #静态模式
 hexo server -p 5000 #更改端口
@@ -71,14 +63,12 @@ hexo d #开始部署
 
 ### 监视文件变动
 ```
-bash
 hexo generate #使用 Hexo 生成静态文件快速而且简单
 hexo generate --watch #监视文件变动
 ```
 
 ### 完成后部署
 ```
-bash
 两个命令的作用是相同的
 hexo generate --deploy
 hexo deploy --generate
@@ -89,13 +79,11 @@ hexo server -g
 
 ### 草稿
 ```
-bash
 hexo publish [layout] <title>
 ```
 
 ### 模版
 ```
-bash
 hexo new "postName" #新建文章
 hexo new page "pageName" #新建页面
 hexo generate #生成静态页面至public目录
@@ -109,20 +97,17 @@ hexo new "Hello World" --lang tw
 
 ### 模版（Scaffold）
 ```
-bash
 hexo new photo "My Gallery"
 ```
 
 ### 写作
 ```
-bash
 hexo new page <title>
 hexo new post <title>
 ```
 
 ### 推送到服务器上
 ```
-bash
 hexo n #写文章
 hexo g #生成
 hexo d #部署 #可与hexo g合并为 hexo d -g
