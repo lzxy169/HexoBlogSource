@@ -407,8 +407,8 @@ font:
 # ---------------------------------------------------------------
 
 # Math Equations Render Support
-# math:
-#   enable: false
+math:
+  enable: true
 
   # Default(true) will load mathjax/katex script on demand
   # That is it only render those page who has 'mathjax: true' in Front Matter.
@@ -955,14 +955,14 @@ daovoice: true
 daovoice_app_id: c2ad22ed
 
 # MathJax Support
-math:
-  engine: 'mathjax' # or 'katex'
-  mathjax:
-    src: custom_mathjax_source
-    config:
-      # MathJax config
-  katex:
-    css: custom_css_source
-    js: custom_js_source # not used
-    config:
+# math:
+#   engine: 'mathjax' # or 'katex'
+#   mathjax:
+#     src: custom_mathjax_source
+#     config:
+#       # MathJax config
+#   katex:
+#     css: custom_css_source
+#     js: custom_js_source # not used
+#     config:
       # KaTeX config
