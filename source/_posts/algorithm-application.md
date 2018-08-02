@@ -239,7 +239,7 @@ int compareDifferentChar(char c, char *s) {
 二叉树的先序遍历为FBACDEGH,中序遍历为：ABDCEFGH,请写出这个二叉树的后序遍历结果。
 ADECBHGF
 
-![WechatIMG2](test/WechatIMG2.jpeg)
+![](algorithm-application/WechatIMG2.jpeg)
 
 先序遍历：++a*bc*+*defg          :根----->左——>右 :先访问根节点，前序遍历左子树，再前序遍历右子树。（简记为：VLR）
 中序遍历：(a+b*c)+((d*e+f)*g)    :左----->根----->右 :从根节点开始，中序遍历根节点的左子树，然后访问根节点，最后中序遍历右子树。（简记为：LVR）
