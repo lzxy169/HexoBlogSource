@@ -189,6 +189,7 @@ void swap(int a, int b) {
         }
     }
     return 0;
+}
 ```
 
 ### 给定一个字符串，输出本字符串中只出现一次并且最靠前的那个字符的位置？
@@ -196,6 +197,7 @@ void swap(int a, int b) {
 ```
  char *strOutPut(char *);
 int compareDifferentChar(char, char *);
+
 int main(int argc, const char * argv[]) {
     char *inputStr = "abaccddeeef";
     char *outputStr = strOutPut(inputStr);
@@ -236,6 +238,11 @@ int compareDifferentChar(char c, char *s) {
 ### 二叉树遍历
 二叉树的先序遍历为FBACDEGH,中序遍历为：ABDCEFGH,请写出这个二叉树的后序遍历结果。
 ADECBHGF
+
+先序遍历：++a*bc*+*defg          :根----->左——>右 :先访问根节点，前序遍历左子树，再前序遍历右子树。（简记为：VLR）
+中序遍历：(a+b*c)+((d*e+f)*g)    :左----->根----->右 :从根节点开始，中序遍历根节点的左子树，然后访问根节点，最后中序遍历右子树。（简记为：LVR）
+后序遍历：abc*+de*f+g*+          :左----->右----->根 :从左到右先叶子后节点的方式遍历访问左右子树，左右子树都访问结束，才访问根节点。（简称LRV）
+层序遍历：++*a*+gbc*fde          :左--->右  上--->下
 
 先序+中序遍历还原二叉树：先序遍历是：ABDEGCFH 中序遍历是：DBGEACHF
 首先从先序得到第一个为A，就是二叉树的根，回到中序，可以将其分为三部分：

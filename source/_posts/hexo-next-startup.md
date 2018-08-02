@@ -13,18 +13,17 @@ categories: [Hexo]
 在官方文档里有详细的安装以及使用教程，不想看文档的话可以按照下面的步骤快速的搭建。
 
 #### 安装 [Homebrew][16]
-```bash
+```
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-
 #### 安装 [Git][17]
-```bash
+```
 $ brew install git
 ```
 
 #### 安装 [nvm][18]
 nvm: Node Version Manager，安装 Node.js 的最佳方式是使用 nvm。
-```bash
+```
 $ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
 // 或者
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
@@ -32,12 +31,12 @@ $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh |
 安装完成后，重启终端nvm环境才生效。
 
 #### 安装 [Node.js][19]
-```bash
+```
 $ nvm install stable
 ```
 
 #### 安装 [Hexo][20]
-```bash
+```
 $ npm install -g hexo-cli
 ```
 hexo 简单的命令格式，比如：
@@ -47,8 +46,7 @@ hexo s == hexo server
 hexo n == hexo new
 
 #### 创建博客
-```bash
-$ hexo init <folder>
+```$ hexo init <folder>
 $ cd <folder>
 $ npm install
 $ hexo n "我的新博客"
@@ -65,12 +63,12 @@ themes        存放主题文件
 
 >**Tip: ** hexo deploy出错解决方法：
 
-```bash
+```
 $ npm install hexo-deployer-git --save
 ```
 
 #### 安装 [NexT][3] 主题
-```bash
+```
 $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```
 
@@ -91,18 +89,27 @@ scheme: Mist
 ```
 
 **使主题生效：**
-``` bash
+```
 $ hexo clean
 $ hexo g -d
 $ hexo s
 ```
+
+**Hexo发布博客引用自带图片的方法**
+1, 修改 _config.yml 配置文件 post_asset_folder 项为 true。在当前blog文件的的同级目录有个跟文件名相同的文件夹，把图片放进去就可以了，
+
+2, 安装 hexo image [插件][1]
+```
+npm install hexo-asset-image --save
+```
+
+3， Just use ![logo](logo.jpg) to insert logo.jpg.
 
 到这里博客的本地搭建已经完成了，这只是开始。
 如果想要博客让别人也能看见，那就得申请域名把博客部署到服务器，然后别人通过域名访问就可以浏览你的博客啦。
 当然你可以把博客部署到[GitHub][11]或者[Coding][12]又或者别的服务器等，域名购买有[DNSPod][13]，[万网][14]，[GoDaddy][15]等等，有国内，国外自己考虑，之后还想要自己的博客有个性或者更好用那就选一个好看的主题DIY了。
 
 至于写Markdown写作工具，各有所爱，我用的是[Sublime Text][21]，装上 [Package Control][22]，[Markdown​Editing][23],  [Markdown Preview][24]或者[Omni​Markup​Previewer][24] 等插件，就可以愉快的玩耍了。
-
 
 
 以下列出的条目可供参考，或许能帮上你～
@@ -149,3 +156,4 @@ $ hexo s
 [24]: https://packagecontrol.io/packages/Markdown%20Preview
 [24]: https://packagecontrol.io/packages/OmniMarkupPreviewer
 [25]: https://www.jianshu.com/p/b03a8d7b1719
+[1]: https://github.com/CodeFalling/hexo-asset-image
