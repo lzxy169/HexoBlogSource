@@ -98,7 +98,7 @@ $ hexo s
 **Hexo发布博客引用自带图片的方法**
 1, 修改 _config.yml 配置文件 post_asset_folder 项为 true。在当前blog文件的的同级目录有个跟文件名相同的文件夹，把图片放进去就可以了，
 
-2, 安装 hexo image [插件][1]
+2, 安装 [hexo image asset 插件][HexoImageAsset插件]
 ```
 npm install hexo-asset-image --save
 ```
@@ -111,6 +111,32 @@ npm install hexo-asset-image --save
 
 至于写Markdown写作工具，各有所爱，我用的是[Sublime Text][21]，装上 [Package Control][22]，[Markdown​Editing][23],  [Markdown Preview][24]或者[Omni​Markup​Previewer][24] 等插件，就可以愉快的玩耍了。
 
+#### Sublime Markdown
+
+****MAC 键盘**
+⌘：command
+⌥：option/alt
+⇧：shift
+⌃：control
+⎋：esc
+
+**MarkdownEditing:**
+- 安装后针对 md\mdown\mmd\txt 格式文件启用插件。颜色方案仿 Byword 及 iA writer。
+- 自动匹配星号（*）、下划线（_）及反引号（`），选中文本按下以上符号能自动在所选文本前后添加配对的符号，方便粗体、斜体和代码框的输入。
+- 直接输入配对的符号后按下退格键（backspace），则两个符号都会被删除；直接输入配对的符号后按下空格键，则会自动删除后一个。
+- 对“选中文字后输入左括号”这一动作进行了调整，以便插入 markdown 链接。
+- 拷贝一个链接，选中文本后按下 ⌘⌥V 会自动插入内联链接。
+- 拷贝一个链接，选中文本后按下 ⌘⌥R 会自动插入引用链接。
+- ⌘K 插入链接；⌘⇧K 插入图片。
+- ⌘B 和 ⌘I 分别用于加粗体和斜体。
+- 选中文本后按下 # 会自动在文本前后进行配对，可重复按下来定义标题级别，还可用 ⌘⇧空格来增加 # 与所选文本之间的空格（也是自动配对的）。
+
+**OmniMarkupPreviewer:**
+- Command +Option +O: 在浏览器中预览
+- Command+Option+X: 导出HTML
+- Ctrl+Alt+C: HTML标记拷贝至剪贴板
+
+[OmniMarkupPreviewer 404][Omnimarkuppreviewer404]
 
 以下列出的条目可供参考，或许能帮上你～
 
@@ -156,4 +182,5 @@ npm install hexo-asset-image --save
 [24]: https://packagecontrol.io/packages/Markdown%20Preview
 [24]: https://packagecontrol.io/packages/OmniMarkupPreviewer
 [25]: https://www.jianshu.com/p/b03a8d7b1719
-[1]: https://github.com/CodeFalling/hexo-asset-image
+[Omnimarkuppreviewer404]: https://stackoverflow.com/questions/35798823/omnimarkuppreviewer-404
+[HexoImageAsset插件]: https://github.com/CodeFalling/hexo-asset-image
