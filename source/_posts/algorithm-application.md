@@ -1,8 +1,8 @@
 ---
 title: 算法之应用
-date: 2018-08-02 13:02:24
-tags:
-categories:
+date: 2018-04-12 12:25:58
+tags: [c, c++]
+categories: Algorithm
 ---
 
 ### 递归(Recursive):当一个函数用它自己来定义时就称为时递归。阶乘、斐波那契数列和汉诺塔，帕斯卡三角形，也就是著名的杨辉三角
