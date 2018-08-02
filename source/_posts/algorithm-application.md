@@ -3,6 +3,7 @@ title: 算法之应用
 date: 2018-04-12 12:25:58
 tags: [c, c++]
 categories: Algorithm
+mathjax: true
 ---
 
 ### 递归(Recursive):当一个函数用它自己来定义时就称为时递归。阶乘、斐波那契数列和汉诺塔，帕斯卡三角形，也就是著名的杨辉三角
@@ -16,7 +17,11 @@ void recursion_loop(int i) {
 // 调用： recursion_loop(0);
 ```
 
-### 取幂运算：计算X的n次方常见的算法是N-1次乘法自乘
+### 取幂运算：计算x的N次方常见的算法是N-1次乘法自乘
+递归的基准条件是：N==0  此时返回1（不调用自身）。
+若N是偶数，则x的N次方等于 x*x的N/2次方。
+若N是奇数，则x的N次方等于 x*x的N/2次方在乘以x。
+时间复杂度：O($\log_2 n$)
 ```
 long int pow(long int x, unsigned int n) {
     if (n == 0)
@@ -47,7 +52,7 @@ static long fib(const long n) {
 }
 ```
 
-### 汉诺塔：假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2*f(k)+1。此后不难证明f(n)=2^n-1。
+### 汉诺塔：假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2*f(k)+1 (等比数列)。此后不难证明f(n)=$2^n$-1。
 ```
 static void move(const char x, const int n, const char z) {
     printf("把圆盘 %d 从柱子 %c 移动到 %c 上\n", n, x, z);
