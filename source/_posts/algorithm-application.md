@@ -72,7 +72,7 @@ static void hanoi(const int n, const char x, const char y, const char z) {
 }
 ```
 
-### 帕斯卡三角形，也就是著名的杨辉三角
+### 帕斯卡三角形，也就是著名的杨辉三角:三角形边界上的数都是1，内部的每个数是位于它上面的两个数之和。
 ```
     1
     1    1
@@ -80,9 +80,8 @@ static void hanoi(const int n, const char x, const char y, const char z) {
     1    3    3    1
     1    4    6    4    1
 ```
-三角形边界上的数都是1，内部的每个数是位于它上面的两个数之和。
-利用递归我们可以很容易地把问题转换为这个性质：假设f(row, col)表示杨辉三角的第row行的第col个元素，
-那么：
+利用递归我们可以很容易地把问题转换为这个性质：
+假设：f(row, col)表示杨辉三角的第row行的第col个元素，那么：
 1. f(row, col) = 1 (col = 1 或者 row = col)，也就是递归的停止条件。
 2. f(row, col) = f(row - 1, col - 1) + f(row - 1, col)，也就是上一行的两个相邻元素的和。
 ```
@@ -92,25 +91,17 @@ static long GetElement(const long row, const long col) {
     else // 其余的部分为上一行的(col - 1)和(col)元素之和
         return GetElement(row - 1, col - 1) + GetElement(row - 1, col);
 }
-static long PascalTriangle(const long n) {
-    int row;
-    int col;
-   for (row = 1; row <= n; ++row) {
-        for (col = 1; col <= row; ++col)
-            printf(" %4ld", GetElement(row, col));
-        printf("\n");
-    }
-}
 ```
 
 ### 求两个整数的最大公约数。
-最大公因数：同时整除两个整数的最大整数。
-
+最大公约数:几个整数中公有的约数，叫做这几个数的公约数；其中最大的一个，叫做这几个数的最大公约数。
+最小公倍数:公倍数(common multiple)指在两个或两个以上的自然数中，如果它们有相同的倍数，这些倍数就是它们的公倍数，其中除0以外最小的一个公倍数，叫做这几个数的最小公倍数。
 两个数的乘积等于两个数的最大公约数和最小公倍数的乘积。
 
-如果N整除A-B，那么我们就说A与B模N同余。
+最大公约数：同时整除两个整数的最大整数。
+最小公倍数 = (a * b)/最大公约数。
 
-最小公倍数 = (a * b)/最大公约数
+如果N整除A-B，那么我们就说A与B模N同余。
 
 ```
 // 1.直接遍历法
@@ -135,7 +126,7 @@ int maxCommonDivisor(int a, int b) {
     return b;
 }
 
-// 3.欧几里得算法计算最大公因数
+// 3.欧几里得算法计算最大公约数
 int gcd(int m, int n) {
     int rem;
     while (n > 0) {
