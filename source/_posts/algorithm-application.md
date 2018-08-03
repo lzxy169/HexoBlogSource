@@ -7,7 +7,7 @@ mathjax: true
 ---
 
 ### 递归(Recursive):当一个函数用它自己来定义时就称为时递归。阶乘、斐波那契数列和汉诺塔，帕斯卡三角形，也就是著名的杨辉三角
-```
+```c // 递归
 void recursion_loop(int i) {
     if (i == 10)
         return;
@@ -22,7 +22,7 @@ void recursion_loop(int i) {
 若N是偶数，则x的N次方等于 x*x的N/2次方。
 若N是奇数，则x的N次方等于 x*x的N/2次方在乘以x。
 时间复杂度：O($\log_2 n$)
-```
+```c // 取幂运算
 long int pow(long int x, unsigned int n) {
     if (n == 0)
         return 1;
@@ -38,7 +38,7 @@ long int pow(long int x, unsigned int n) {
 ```
 
 ### 阶乘：0!=1，n!=(n-1)!×n
-```
+```c // 阶乘
 static long factorial(const long n) {
     return 0 == n || 1 == n ? 1  : n * factorial(n - 1);
 }
@@ -46,7 +46,7 @@ static long factorial(const long n) {
 
 ### 斐波那契数列(Fibonacci)：又称黄金分割数列,以递归的方法定义：F(0)=0，F(1)=1, F(n)=F(n-1)+F(n-2)（n>=2，n∈N*）
 1, 1, 2, 3, 5, 8, 13, 21, 34...这个数列从第3项开始，每一项都等于前两项之和。
-```
+```c // Fibonacci
 static long fib(const long n) {
     return 0 == n || 1 == n ? 1 : fib(n - 1) + fib(n - 2);
 }
@@ -57,7 +57,7 @@ a(n) = 2*a(n-1) + 1;
 a(n) + 1 = 2*(a(n-1) + 1);
 于是{a(n)+1}是首项为a(1)=1，公比为2的等比数列，
 求得a(n)+1 = $2^n$，所以a(n) = $2^n$ - 1;
-```
+```c // Fibonacci
 static void move(const char x, const int n, const char z) {
     printf("把圆盘 %d 从柱子 %c 移动到 %c 上\n", n, x, z);
 }
@@ -84,7 +84,7 @@ static void hanoi(const int n, const char x, const char y, const char z) {
 假设：f(row, col)表示杨辉三角的第row行的第col个元素，那么：
 1. f(row, col) = 1 (col = 1 或者 row = col)，也就是递归的停止条件。
 2. f(row, col) = f(row - 1, col - 1) + f(row - 1, col)，也就是上一行的两个相邻元素的和。
-```
+```c // 帕斯卡三角形
 static long GetElement(const long row, const long col) {
     if ((1 == col) || (row == col)) // 每行的外围两个元素为1
         return 1;
@@ -103,7 +103,7 @@ static long GetElement(const long row, const long col) {
 
 如果N整除A-B，那么我们就说A与B模N同余。
 
-```
+```c // 最大公约数
 // 1.直接遍历法
 int maxCommonDivisor(int a, int b) {
     int max = 0;
@@ -139,7 +139,7 @@ int gcd(int m, int n) {
 ```
 
 ### 不用中间变量,用两种方法交换A和B的值
-```
+```c // 交换
 // 1.中间变量
 void swap(int a, int b) {
    int temp = a;
@@ -164,7 +164,7 @@ void swap(int a, int b) {
 
 ### 实现一个字符串“how are you”的逆序输出（编程语言不限）。
 如给定字符串为“hello world”,输出结果应当为“world hello”。
-```
+```c // 逆序
  int spliterFunc(char *p) {
     char c[100][100];
     int i = 0;
@@ -194,7 +194,7 @@ void swap(int a, int b) {
 
 ### 给定一个字符串，输出本字符串中只出现一次并且最靠前的那个字符的位置？
 如“abaccddeeef”,字符是b,输出应该是2。
-```
+```c // 输出字符串
  char *strOutPut(char *);
 int compareDifferentChar(char, char *);
 
@@ -267,7 +267,7 @@ ADECBHGF
 ### 打印2-100之间的素数(质数)
 质数又称素数。一个大于1的自然数，除了1和它自身外，不能整除其他自然数的数叫做质数；否则称为合数。
 在一般领域，对正整数n，如果用 2 到 $\sqrt n$ 之间的所有整数去除，均无法整除，则n为质数。
-```
+```c // 素数
  int main(int argc, const char * argv[]) {
     for (int i = 2; i < 100; i++) {
         int r = isPrime(i);
@@ -278,8 +278,7 @@ ADECBHGF
     return 0;
 }
 
-int isPrime(int n)
-{
+int isPrime(int n) {
     int i, s;
     for(i = 2; i <= sqrt(n); i++)
         if(n % i == 0)  return 0;
@@ -288,19 +287,22 @@ int isPrime(int n)
 ```
 
 ### 给一列无序数组，求出中位数并给出算法的时间复杂度。
-若数组有奇数个元素，中位数是a[(n-1)/2]；若数组有偶数个元素，中位数为a[n/2-1]和a[n/2]两个数的平均值。这里为方便起见，假设数组为奇数个元素。
+若数组有奇数个元素，中位数是a[(n-1)/2]；
+若数组有偶数个元素，中位数为a[n/2-1]和a[n/2]两个数的平均值。
+这里为方便起见，假设数组为奇数个元素。
 
-**思路一：**把无序数组排好序，取出中间的元素。时间复杂度取决于排序算法，最快是快速排序，O(nlogn)，或者是非比较的基数排序，时间为O(n),空间为O(n)。这明显不是我们想要的。
+**思路一：**把无序数组排好序，取出中间的元素。
+时间复杂度取决于排序算法，最快是快速排序，O(n$\log_2 n$)，或者是非比较的基数排序，时间为O(n),空间为O(n)。这明显不是我们想要的。
 
-**思路二：**采用快速排序的分治partition过程。任意挑一个元素，以该元素为支点，将数组分成两部分，左边是小于等于支点的，右边是大于支点的。如果左侧长度正好是(n - 1)/2，那么支点恰为中位数。如果左侧长度<(n-1)/2, 那么中位数在右侧，反之，中位数在左侧。 进入相应的一侧继续寻找中位数。
+**思路二：**采用快速排序的分治partition过程。
+任意挑一个元素，以该元素为支点，将数组分成两部分，左边是小于等于支点的，右边是大于支点的。
+如果左侧长度正好是(n - 1)/2，那么支点恰为中位数。
+如果左侧长度<(n-1)/2, 那么中位数在右侧，反之，中位数在左侧，进入相应的一侧继续寻找中位数。
 
-```
-// 快速排序的分治过程找无序数组的中位数  
-int partition(int a[], int low, int high) //快排的一次排序过程
-{
+```c // 快速排序的分治过程找无序数组的中位数  
+int partition(int a[], int low, int high)  { // 快排的一次排序过程
     int q = a[low];
-    while (low < high)
-    {
+    while (low < high) {
         while (low < high && a[high] >= q)
             high--;
         a[low] = a[high];
@@ -311,14 +313,13 @@ int partition(int a[], int low, int high) //快排的一次排序过程
     a[low] = q;
     return low;
 }
-int findMidium(int a[], int n)
-{
+
+int findMidium(int a[], int n) {
     int index = n / 2;
     int left = 0;
     int right = n - 1;
     int q = -1;
-    while (index != q)
-    {
+    while (index != q) {
         q = partition(a, left, right);
         if (q < index)
             left = q + 1;
@@ -329,18 +330,19 @@ int findMidium(int a[], int n)
 }
 ```
 
-**思路三：**将数组的前（n+1）／2个元素建立一个最小堆。然后，对于下一个元素，和堆顶的元素比较，如果小于等于，丢弃之，如果大于，则用该元素取代堆顶，再调整堆，接着看下一个元素。重复这个步骤，直到数组为空。当数组都遍历完了，（堆中元素为最大的（n+1）／2个元素，）堆顶的元素即是中位数。
+**思路三：**将数组的前(n+1)/2个元素建立一个最小堆。
+然后，对于下一个元素，和堆顶的元素比较，如果小于等于，丢弃之，如果大于，则用该元素取代堆顶，再调整堆，接着看下一个元素。
+重复这个步骤，直到数组为空。当数组都遍历完了，(堆中元素为最大的(n+1)/2个元素) 堆顶的元素即是中位数。
 
-```
- //构建最小堆找无序数组的中位数  
-void nswap(int& i, int& j)
-{
+```c // 构建最小堆找无序数组的中位数  
+
+void nswap(int& i, int& j) {
     i = i^j;
     j = i^j;
     i = i^j;
 }
-void minHeapify(int a[], int i, int len)
-{
+
+void minHeapify(int a[], int i, int len) {
     int temp;
     int least = i;
     int l = i * 2 + 1;
@@ -349,26 +351,21 @@ void minHeapify(int a[], int i, int len)
         least = l;
     if (r < len && a[r] < a[least])
         least = r;
-    if (least != i)
-    {
+    if (least != i) {
         nswap(a[i], a[least]);
         minHeapify(a, least, len);
     }
 }
-void buildMinHeap(int a[], int len)
-{
-    for (int i = (len-2) / 2; i >= 0; i--)
-    {
+void buildMinHeap(int a[], int len) {
+    for (int i = (len-2) / 2; i >= 0; i--) {
         minHeapify(a, i, len);
     }
 }
-int findMidium2(int a[], int n)
-{
+
+int findMidium2(int a[], int n) {
     buildMinHeap(a, (n + 1) / 2);
-    for (int i = (n + 1) / 2; i < n; i++)
-    {
-        if (a[i] > a[0])
-        {
+    for (int i = (n + 1) / 2; i < n; i++) {
+        if (a[i] > a[0]) {
             nswap(a[i], a[0]);
             minHeapify(a, 0,(n + 1) / 2);
         }
