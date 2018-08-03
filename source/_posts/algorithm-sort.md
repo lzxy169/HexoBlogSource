@@ -167,67 +167,89 @@ mathjax: true
     }
 ```
 
-**2，堆排序（heap sort）：**堆有两个性质，一是堆中某个节点的值总是不大于或不小于其父节点的值，二是堆是一棵完全树。以从大到小排序为例，首先要把得到的数组构建为一个最小堆，这样父节点均是小于或者等于子结点，根节点就是最小值，然后让根节点与尾节点交换，这样一次之后，再把前n－1个元素构建出最小根堆，让根结点与第n－2个元素交换，依此类推，得到降序序列。
+**2，堆排序（heap sort）：**
+堆有两个性质，一是堆中某个节点的值总是不大于或不小于其父节点的值，二是堆是一棵完全树。
+以从大到小排序为例，首先要把得到的数组构建为一个最小堆，这样父节点均是小于或者等于子结点，根节点就是最小值，然后让根节点与尾节点交换，这样一次之后，再把前n－1个元素构建出最小根堆，让根结点与第n－2个元素交换，依此类推，得到降序序列。
 时间复杂度：O(n$\log_2 n$)
 
 ```c // 堆排序 从大到小排序
-     // 以i节点为根，调整为堆的算法，n是节点总数，i节点的子结点为i*2+1,i*2+2
-    void heapMin(int a[], int i, int n) {
-        // tmp保存根节点，j为左孩子编号
-        int tmp = a[i];
-        int j = i*2+1;
-        
-        while (j < n) {
-            if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
-                j++;
-            }
-            if (a[j] >= tmp) {
-                break;
-            }
+
+// 以i节点为根，调整为堆的算法，n是节点总数，i节点的子结点为i*2+1,i*2+2
+
+void nswap(int& i, int& j) {
+    i = i^j;
+    j = i^j;
+    i = i^j;
+}
+
+void heapMin(int a[], int i, int n) {
+    int least = i; // 根节点,最小的
+    int l = i * 2 + 1;
+    int r = i * 2 + 2;
+    if (l < n && a[l] < a[least])
+        least = l;
+    if (r < n && a[r] < a[least])
+        least = r;
+    if (least != i) {
+        nswap(a[i], a[least]);
+        minHeapify(a, least, n);
+    }
+}
+
+void heapMin(int a[], int i, int n) {
+    // i为根节点，j为左孩子，j+1为右孩子
+    int tmp = a[i];
+    int j = i*2+1;
+    
+    while (j < n) {
+        if (j+1 < n && a[j+1] < a[j]) { // 在左右孩子中找最小的
+            j++;
+        }
+        if (a[j] >= tmp)  break;
+        a[i] = a[j];
+        i = j;
+        j = i*2+1;
+    }
+    a[i] = tmp;
+}
+
+void heapMax(int a[], int i, int n) {
+    // tmp保存根节点，j为左孩子编号
+    int tmp = a[i];
+    int j = i*2+1;
+    for (; j < n; j = j*2+1) { //从i结点的左子结点开始，也就是2i+1处开始
+        if (j+1 < n && a[j] < a[j+1]) { //如果左子结点小于右子结点，k指向右子结点
+            j ++;
+        }
+        if (a[j] > tmp) { //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
             a[i] = a[j];
             i = j;
-            j = i*2+1;
+        } else {
+            break;
         }
-        a[i] = tmp;
     }
-    
-    void heapMax(int a[], int i, int n) {
-        // tmp保存根节点，j为左孩子编号
-        int tmp = a[i];
-        int j = i*2+1;
-        for (; j < n; j = j*2+1) { //从i结点的左子结点开始，也就是2i+1处开始
-            if (j+1 < n && a[j] < a[j+1]) { //如果左子结点小于右子结点，k指向右子结点
-                j ++;
-            }
-            if (a[j] > tmp) { //如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
-                a[i] = a[j];
-                i = j;
-            } else {
-                break;
-            }
-        }
-        a[i] = tmp; //将tmp值放到最终的位置
-    }
+    a[i] = tmp; //将tmp值放到最终的位置
+}
 
-    void heapSort(int a[], int n) {
-        // n/2-1最后一个非叶子节点
-        // 下面这个操作是建立最小堆
-        for (int i = n/2-1; i >= 0; i--) {
-            heapMin(a, i, n);
-        }
-        // for语句为输出堆顶元素，调整堆操作
-        for (int j = n-1; j >= 1; j--) {
-            // 堆顶与堆尾交换
-            int tmp = a[0];
-            a[0] = a[j];
-            a[j] = tmp;
-            heapMin(a, 0, j);
-        }
-        // 得到的就是降序序列
-        for (int i = 0; i < n; i++) {
-            printf(" %d", a[i]);
-        }
+void heapSort(int a[], int n) {
+    // n/2-1最后一个非叶子节点
+    // 下面这个操作是建立最小堆
+    for (int i = n/2-1; i >= 0; i--) {
+        heapMin(a, i, n);
     }
+    // for语句为输出堆顶元素，调整堆操作
+    for (int j = n-1; j >= 1; j--) {
+        // 堆顶与堆尾交换
+        int tmp = a[0];
+        a[0] = a[j];
+        a[j] = tmp;
+        heapMin(a, 0, j);
+    }
+    // 得到的就是降序序列
+    for (int i = 0; i < n; i++) {
+        printf(" %d", a[i]);
+    }
+}
 ```
 
 ### 归并排序（merge sort）

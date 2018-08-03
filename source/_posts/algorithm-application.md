@@ -6,7 +6,9 @@ categories: Algorithm
 mathjax: true
 ---
 
-### 递归(Recursive):当一个函数用它自己来定义时就称为时递归。阶乘、斐波那契数列和汉诺塔，帕斯卡三角形，也就是著名的杨辉三角
+### 递归(Recursive)
+当一个函数用它自己来定义时就称为时递归。
+阶乘、斐波那契数列和汉诺塔，帕斯卡三角形，也就是著名的杨辉三角
 ```c // 递归
 void recursion_loop(int i) {
     if (i == 10)
@@ -17,8 +19,8 @@ void recursion_loop(int i) {
 // 调用： recursion_loop(0);
 ```
 
-### 取幂运算：计算x的N次方常见的算法是N-1次乘法自乘
-递归的基准条件是：N==0  此时返回1（不调用自身）。
+### 取幂运算
+计算x的N次方常见的算法是N-1次乘法自乘，递归的基准条件是：N==0  此时返回1（不调用自身）。
 若N是偶数，则x的N次方等于 x*x的N/2次方。
 若N是奇数，则x的N次方等于 x*x的N/2次方在乘以x。
 时间复杂度：O($\log_2 n$)
@@ -37,14 +39,16 @@ long int pow(long int x, unsigned int n) {
 }
 ```
 
-### 阶乘：0!=1，n!=(n-1)!×n
+### 阶乘
+0!=1，n!=(n-1)!×n
 ```c // 阶乘
 static long factorial(const long n) {
     return 0 == n || 1 == n ? 1  : n * factorial(n - 1);
 }
 ```
 
-### 斐波那契数列(Fibonacci)：又称黄金分割数列,以递归的方法定义：F(0)=0，F(1)=1, F(n)=F(n-1)+F(n-2)（n>=2，n∈N*）
+### 斐波那契数列(Fibonacci)
+又称黄金分割数列,以递归的方法定义：F(0)=0，F(1)=1, F(n)=F(n-1)+F(n-2)（n>=2，n∈N*）
 1, 1, 2, 3, 5, 8, 13, 21, 34...这个数列从第3项开始，每一项都等于前两项之和。
 ```c // Fibonacci
 static long fib(const long n) {
@@ -52,7 +56,9 @@ static long fib(const long n) {
 }
 ```
 
-### 汉诺塔：假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2*f(k)+1 (等比数列)。此后不难证明(数学归纳法) f(n)=$2^n$-1。
+### 汉诺塔
+假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2*f(k)+1 (等比数列)。
+证明(数学归纳法) f(n)=$2^n$-1。
 a(n) = 2*a(n-1) + 1;
 a(n) + 1 = 2*(a(n-1) + 1);
 于是{a(n)+1}是首项为a(1)=1，公比为2的等比数列，
@@ -72,7 +78,8 @@ static void hanoi(const int n, const char x, const char y, const char z) {
 }
 ```
 
-### 帕斯卡三角形，也就是著名的杨辉三角:三角形边界上的数都是1，内部的每个数是位于它上面的两个数之和。
+### 帕斯卡三角形
+也就是著名的杨辉三角:三角形边界上的数都是1，内部的每个数是位于它上面的两个数之和。
 ```
     1
     1    1
@@ -84,6 +91,7 @@ static void hanoi(const int n, const char x, const char y, const char z) {
 假设：f(row, col)表示杨辉三角的第row行的第col个元素，那么：
 1. f(row, col) = 1 (col = 1 或者 row = col)，也就是递归的停止条件。
 2. f(row, col) = f(row - 1, col - 1) + f(row - 1, col)，也就是上一行的两个相邻元素的和。
+
 ```c // 帕斯卡三角形
 static long GetElement(const long row, const long col) {
     if ((1 == col) || (row == col)) // 每行的外围两个元素为1
@@ -93,7 +101,7 @@ static long GetElement(const long row, const long col) {
 }
 ```
 
-### 求两个整数的最大公约数。
+### 求两个整数的最大公约数
 最大公约数:几个整数中公有的约数，叫做这几个数的公约数；其中最大的一个，叫做这几个数的最大公约数。
 最小公倍数:公倍数(common multiple)指在两个或两个以上的自然数中，如果它们有相同的倍数，这些倍数就是它们的公倍数，其中除0以外最小的一个公倍数，叫做这几个数的最小公倍数。
 两个数的乘积等于两个数的最大公约数和最小公倍数的乘积。
@@ -162,7 +170,7 @@ void swap(int a, int b) {
 }
 ```
 
-### 实现一个字符串“how are you”的逆序输出（编程语言不限）。
+### 实现一个字符串“how are you”的逆序输出
 如给定字符串为“hello world”,输出结果应当为“world hello”。
 ```c // 逆序
  int spliterFunc(char *p) {
@@ -192,7 +200,7 @@ void swap(int a, int b) {
 }
 ```
 
-### 给定一个字符串，输出本字符串中只出现一次并且最靠前的那个字符的位置？
+### 给定一个字符串，输出本字符串中只出现一次并且最靠前的那个字符的位置
 如“abaccddeeef”,字符是b,输出应该是2。
 ```c // 输出字符串
  char *strOutPut(char *);
@@ -343,8 +351,7 @@ void nswap(int& i, int& j) {
 }
 
 void minHeapify(int a[], int i, int len) {
-    int temp;
-    int least = i;
+    int least = i; // 根节点,最小的
     int l = i * 2 + 1;
     int r = i * 2 + 2;
     if (l < len && a[l] < a[least])
@@ -357,6 +364,7 @@ void minHeapify(int a[], int i, int len) {
     }
 }
 void buildMinHeap(int a[], int len) {
+    // len/2-1 或者 (len-2) / 2, 为最后一个非叶子节点
     for (int i = (len-2) / 2; i >= 0; i--) {
         minHeapify(a, i, len);
     }
@@ -375,7 +383,7 @@ int findMidium2(int a[], int n) {
 ```
 
 **引申一：查找N个元素中的第K个小的元素**
-编程珠玑给出了一个时间复杂度O（N）的解决方案。该方案改编自快速排序。
+编程珠玑给出了一个时间复杂度O(N)的解决方案。该方案改编自快速排序。
 经过快排的一次划分，
    1）如果左半部份的长度>K-1，那么这个元素就肯定在左半部份了
    2）如果左半部份的长度==K-1，那么当前划分元素就是结果了。
@@ -391,8 +399,7 @@ int findMidium2(int a[], int n) {
 第四趟，用堆方法从第一趟筛选出的N-K/3个元素中查找K/4个小的元素，这是的第K/4小的元素即使所求。
 
 ### 输入一个整型数组，求出子数组和的最大值，并给出算法的时间复杂度。
-设b[i]表示a[0...i]的子数组和的最大值，且b[i]一定包含a[i]，即：
-sum为子问题的最优解，
+设b[i]表示a[0...i]的子数组和的最大值，且b[i]一定包含a[i]，即：sum为子问题的最优解
 1. 包含a[i],即求b[i]的最大值，在计算b[i]时,可以考虑以下两种情况,因为a[i]要求一定包含在内，所以
      1) 当b[i-1]>0, b[i] = b[i-1]+a[i]
      2) 当b[i-1]<=0, b[i] = a[i], 当b[i-1]<=0，这时候以a[i]重新作为b[i]的起点。     
@@ -400,25 +407,18 @@ sum为子问题的最优解，
 最后比较b[i]和 sum，即,如果b[i] >sum ,即b[i]为最优解,然后更新sum的值.
 在实现时，bMax代表 b[k], sum更新前代表前一步子问题的最优解，更新后代表当前问题的最优解。实现如下：
 
+```c // 求数组的子数组和的最大值，时间复杂度为O(n)  
 
-```
-//求数组的子数组和的最大值，时间复杂度为O(n)  
-
-int maxSumArr(int a[], int n,int* start, int* end)
-{
+int maxSumArr(int a[], int n,int* start, int* end) {
     int s, e;
     int sum = a[0];
     int bMax=a[0];
     *start = *end = 0;
-    for (int i = 1; i < n; i++)
-    {
-        if (bMax > 0) //情况一，子数组包含a[i]，且b[i-1]>0（上一次的最优解大于0），b[i] = b[i-1]+a[i]
-        {
+    for (int i = 1; i < n; i++) {
+        if (bMax > 0)  { //情况一，子数组包含a[i]，且b[i-1]>0（上一次的最优解大于0），b[i] = b[i-1]+a[i]
             bMax += a[i];
             e = i;
-        }
-        else     //情况二，子数组包含a[i]，且b[i-1]<=0（上一次的最优解小于0），这时候以a[i]重新作为b[i]的起点。
-        {
+        } else { //情况二，子数组包含a[i]，且b[i-1]<=0（上一次的最优解小于0），这时候以a[i]重新作为b[i]的起点。
             bMax = a[i];
             s = i;
             e = i;
