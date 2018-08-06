@@ -103,13 +103,13 @@ $ hexo s
 npm install hexo-asset-image --save
 ```
 
-3， Just use ![logo](logo.jpg) to insert logo.jpg.
+3， Just use \![logo](logo.jpg) to insert logo.jpg.
 
 到这里博客的本地搭建已经完成了，这只是开始。
 如果想要博客让别人也能看见，那就得申请域名把博客部署到服务器，然后别人通过域名访问就可以浏览你的博客啦。
 当然你可以把博客部署到[GitHub][11]或者[Coding][12]又或者别的服务器等，域名购买有[DNSPod][13]，[万网][14]，[GoDaddy][15]等等，有国内，国外自己考虑，之后还想要自己的博客有个性或者更好用那就选一个好看的主题DIY了。
 
-至于写Markdown写作工具，各有所爱，我用的是[Sublime Text][21]，装上 [Package Control][22]，[Markdown​Editing][23],  [Markdown Preview][24]或者[Omni​Markup​Previewer][24] 等插件，就可以愉快的玩耍了。
+至于写Markdown写作工具，各有所爱，我用的是[Sublime Text][21]，装上 [Package Control][22]，[Markdown​Editing][23],  [Markdown Preview][24]或者[Omni​Markup​Previewer][25] 等插件，就可以愉快的玩耍了。
 
 #### Sublime Markdown
 
@@ -154,7 +154,7 @@ npm install hexo-asset-image --save
 [hexo的next主题个性化教程:打造炫酷网站][10] 
 
 #### Markdown 语法参考 ：
-[Markdown 语法整理大集合2017][25]
+[Markdown 语法整理大集合2017][26]
 
 [1]: https://hexo.io/zh-cn/
 [2]: http://theme-next.iissnan.com/getting-started.html
@@ -180,7 +180,7 @@ npm install hexo-asset-image --save
 [22]: https://packagecontrol.io/
 [23]: https://packagecontrol.io/packages/MarkdownEditing
 [24]: https://packagecontrol.io/packages/Markdown%20Preview
-[24]: https://packagecontrol.io/packages/OmniMarkupPreviewer
-[25]: https://www.jianshu.com/p/b03a8d7b1719
+[25]: https://packagecontrol.io/packages/OmniMarkupPreviewer
+[26]: https://www.jianshu.com/p/b03a8d7b1719
 [Omnimarkuppreviewer404]: https://stackoverflow.com/questions/35798823/omnimarkuppreviewer-404
 [HexoImageAsset插件]: https://github.com/CodeFalling/hexo-asset-image
