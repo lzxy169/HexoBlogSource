@@ -398,38 +398,35 @@ int findMidium2(int a[], int n) {
 第四趟，用堆方法从第一趟筛选出的N-K/3个元素中查找K/4个小的元素，这是的第K/4小的元素即使所求。
 
 ### 输入一个整型数组，求出子数组和的最大值，并给出算法的时间复杂度。
-设b[i]表示a[0...i]的子数组和的最大值，且b[i]一定包含a[i]，即：sum为子问题的最优解
-1. 包含a[i],即求b[i]的最大值，在计算b[i]时,可以考虑以下两种情况,因为a[i]要求一定包含在内，所以
-     1) 当b[i-1]>0, b[i] = b[i-1]+a[i]
-     2) 当b[i-1]<=0, b[i] = a[i], 当b[i-1]<=0，这时候以a[i]重新作为b[i]的起点。     
-2. 不包含a[i],即a[0]~a[i-1]的最大值（即0~i-1局部问题的最优解),设为sum
-最后比较b[i]和 sum，即,如果b[i] >sum ,即b[i]为最优解,然后更新sum的值.
-在实现时，bMax代表 b[k], sum更新前代表前一步子问题的最优解，更新后代表当前问题的最优解。实现如下：
+假如只有两个数，a[0] and a[1]。
+这样，最大值存在的情况，无非就是：a[0], a[0] + a[1], a[1]。这个过程基本就是三个数字中，找到最大值的过程。
 
-```c // 求数组的子数组和的最大值，时间复杂度为O(n)  
+然后推广到n的时候，从0->n - 1遍历只要重复这个过程，就能简单的获取到最终的最大值。
 
-int maxSumArr(int a[], int n,int* start, int* end) {
-    int s, e;
-    int sum = a[0];
-    int bMax=a[0];
-    *start = *end = 0;
-    for (int i = 1; i < n; i++) {
-        if (bMax > 0)  { //情况一，子数组包含a[i]，且b[i-1]>0（上一次的最优解大于0），b[i] = b[i-1]+a[i]
-            bMax += a[i];
-            e = i;
-        } else { //情况二，子数组包含a[i]，且b[i-1]<=0（上一次的最优解小于0），这时候以a[i]重新作为b[i]的起点。
-            bMax = a[i];
-            s = i;
-            e = i;
-        }            //情况三，子数组不包含a[i],即b[i]=sum
-        if (bMax > sum)   //三种情况相比较，最大值作为更新后的最优解，存在sum
-        {
-            sum = bMax;
-            *start = s;
-            *end = e;
-        }
-    }
-    return sum;
-}  
+假设现在有三个数字a[0] a[1] a[2].
+这样先比较前两个元素，a[0],a[1],以及a[0] + a[1]。因为下次的比较需要将前面的a[0]+a[1]作为一个整体加入到下一次的比较中，所以需要有一个值能够用来表示其和。这个变量用nStart表示。
+nAll则是相当于每次比较中的a[0]。那么每次的比较的顺序就是：a[1]和a[0] + a[1]比较。nStart取其最大值，然后在和相当于a[0]的nAll比较。如此往复，当线性遍历结束的时候，就成功的获取到了最大值。
+
+时间复杂度O(n)，空间复杂度为O(1)。
 ```
+#include <iostream>
+using namespace std;
 
+#define max(a, b) (a)>(b)?(a):(b)
+
+int MaxSubArray(int *a, int n) {
+    int nStart = a[0];
+    int nAll = a[0];
+    for (int i = 1; i < n; ++i) {
+        nStart = max(a[i], nStart + a[i]);
+        nAll = max(nStart, nAll);
+    }
+    return nAll;
+}
+int main() {
+    cout << "Hello world!" << endl;
+    int array[] = {10, -1, 3, -11, -20, 33, 1, -6, 13};
+    cout << MaxSubArray(array, sizeof(array)/sizeof(int)) << endl;
+    return 0;
+}
+```
