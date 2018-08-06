@@ -113,7 +113,7 @@ npm install hexo-asset-image --save
 
 #### Sublime Markdown
 
-****MAC 键盘**
+**MAC 键盘**
 ⌘：command
 ⌥：option/alt
 ⇧：shift
