@@ -103,7 +103,7 @@ $ hexo s
 npm install hexo-asset-image --save
 ```
 
-3， Just use \![logo](logo.jpg) to insert logo.jpg.
+3， Just use \!\[logo\]\(logo.jpg\) to insert logo.jpg.
 
 到这里博客的本地搭建已经完成了，这只是开始。
 如果想要博客让别人也能看见，那就得申请域名把博客部署到服务器，然后别人通过域名访问就可以浏览你的博客啦。
